@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--
+    Hybrid Automation Framework — TestNG Suite
+    Run with: mvn test
+    Override browser: mvn test -Dbrowser=firefox
+    Override env:     mvn test -Denv=staging
+    Run smoke only:   mvn test -Dcucumber.filter.tags="@smoke"
+-->
+<suite name="Hybrid Automation Suite"
+       verbose="2"
+       thread-count="1"
+       data-provider-thread-count="1">
+
+    <listeners>
+        <listener class-name="com.framework.listeners.TestNGListener"/>
+    </listeners>
+
+    <parameter name="browser"  value="chrome"/>
+    <parameter name="headless" value="false"/>
+    <parameter name="env"      value=""/>
+
+    <test name="Smoke Tests">
+        <parameter name="cucumber.filter.tags" value="@smoke"/>
+        <classes>
+            <class name="com.framework.runners.TestRunner"/>
+        </classes>
+    </test>
+
+    <test name="Regression Tests">
+        <parameter name="cucumber.filter.tags" value="@regression"/>
+        <classes>
+            <class name="com.framework.runners.TestRunner"/>
+        </classes>
+    </test>
+
+</suite>

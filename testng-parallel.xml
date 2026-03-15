@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<!--
+    Parallel Execution Suite
+    Run with: mvn test -Pparallel
+    Scenarios run in parallel threads — each thread gets its own WebDriver via ThreadLocal.
+-->
+<suite name="Parallel Automation Suite"
+       verbose="1"
+       thread-count="4"
+       data-provider-thread-count="4"
+       parallel="methods">
+
+    <listeners>
+        <listener class-name="com.framework.listeners.TestNGListener"/>
+    </listeners>
+
+    <parameter name="browser"  value="chrome"/>
+    <parameter name="headless" value="true"/>
+
+    <test name="Parallel Smoke + Regression">
+        <classes>
+            <class name="com.framework.runners.ParallelRunner"/>
+        </classes>
+    </test>
+
+</suite>

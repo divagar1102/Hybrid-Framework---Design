@@ -1,0 +1,32 @@
+# Build output
+target/
+*.class
+*.jar
+
+# IDE
+.idea/
+*.iml
+.vscode/
+*.classpath
+*.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Reports (generated at runtime)
+target/reports/
+target/screenshots/
+target/allure-results/
+target/allure-report/
+target/cucumber-reports/
+target/logs/
+
+# Credentials - never commit these
+config-prod.properties
+secrets.properties
